@@ -130,10 +130,12 @@
     <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="GradePredictor.cpp" />
+    <ClCompile Include="MainProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
     <ClInclude Include="Category.h" />
+    <ClInclude Include="GradePredictor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

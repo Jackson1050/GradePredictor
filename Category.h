@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -14,17 +15,17 @@ class Category
 
 private:
 
-	vector <Assignment> Assignments;
+	
 	string nameC;
 	double totalWeight;
 	double predGradeRem;
 
-private:
-
+public:
+	vector <Assignment> Assignments{};
 	Category();
 	string getName();
 	void setName(string nC);
-	void addAssignment();
+	void addAssignment(Assignment a);
 	void editAssignment();
 	double getWeight();
 	void setWeight(double w);

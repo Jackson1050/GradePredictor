@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ class Assignment
 private:
 
 	string nameA;
+	string group;
 	int pointsP;
 	int pointsE;
 	bool isComplete;
@@ -29,6 +31,8 @@ public:
 	void setIsComplete(bool isC);
 	bool getIsEdited();
 	void setIsEdited(bool isE);
+	string getGroup();
+	void setGroup(string gr);
 	string getAssignmentInfo();
 };
 #endif

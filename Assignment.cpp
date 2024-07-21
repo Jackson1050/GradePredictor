@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -60,6 +61,16 @@ void Assignment::setIsEdited(bool isE)
 	isEdited = isE;
 }
 
+string Assignment::getGroup()
+{
+	return group;
+}
+
+void Assignment::setGroup(string gr)
+{
+	group = gr;
+}
+
 string Assignment::getAssignmentInfo()
 {
 	string complete;
@@ -83,6 +94,8 @@ string Assignment::getAssignmentInfo()
 		edited = "No";
 	}
 
-	string infoA = "Name: " + nameA + "\n" + "Points: " + to_string(pointsE) + "/" + to_string(pointsP) +
+	string infoA ="Category: " + group + "\n" + "Name: " + nameA + "\n" + "Points: " + to_string(pointsE) + "/" + to_string(pointsP) +
 		"\n" + "Complete?: " + complete + "\n" + "Edited?: " + edited;
+
+	return infoA;
 }
