@@ -17,13 +17,19 @@ private:
 
 	vector <Category> Categories {};
 	double predClassGrade;
+	int index;
+	int choice;
+	int catInd = 0;
 
 public:
 
 	void readFiles();
 	void printSummary();
 	void printReport();
-	void addCategory(Category c);
+	Category addCategory(Category c);
 	void editCategory();
+	void mainMenu();
+	void catMenu();
+	void assignMenu();
 };
 #endif

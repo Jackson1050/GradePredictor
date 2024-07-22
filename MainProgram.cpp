@@ -17,7 +17,7 @@ int main()
 	GradePredictor GP;
 
 	GP.readFiles();
-	GP.printReport();
+	GP.mainMenu();
 
 	return 0;
 }

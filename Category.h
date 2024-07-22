@@ -26,7 +26,8 @@ public:
 	string getName();
 	void setName(string nC);
 	void addAssignment(Assignment a);
-	void editAssignment();
+	Assignment newInfo(Assignment a);
+	Assignment editAssignment(Assignment a);
 	double getWeight();
 	void setWeight(double w);
 	int getAComplete();

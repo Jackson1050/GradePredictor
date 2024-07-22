@@ -10,7 +10,7 @@ using namespace std;
 
 Category::Category()
 {
-	
+	totalWeight = 0.0;
 }
 
 string Category::getName()
@@ -28,9 +28,60 @@ void Category::addAssignment(Assignment a)
 
 }
 
-void Category::editAssignment()
+Assignment Category::newInfo(Assignment a)
 {
+	string tempName;
+	int tempPP;
+	int tempPE;
+	bool tempISC;
+	system("CLS");
 
+	cout << "Enter assignment name: " << endl;
+	cin >> tempName;
+	a.setNameA(tempName);
+
+	cout << "Enter points earned: " << endl;
+	cin >> tempPE;
+	a.setPointsE(tempPE);
+
+	cout << "Enter points possible: " << endl;
+	cin >> tempPP;
+	a.setPointsP(tempPP);
+
+	cout << "Is assignment completed? (1 for yes, 0 for no): " << endl;
+	cin >> tempISC;
+	a.setIsComplete(tempISC);
+
+	return a;
+}
+
+Assignment Category::editAssignment(Assignment a)
+{
+	string tempName;
+	int tempPP;
+	int tempPE;
+	bool tempISC;
+	system("CLS");
+
+	cout << "Enter assignment name: " << endl;
+	cin >> tempName;
+	a.setNameA(tempName);
+
+	cout << "Enter points earned: " << endl;
+	cin >> tempPE;
+	a.setPointsE(tempPE);
+
+	cout << "Enter points possible: " << endl;
+	cin >> tempPP;
+	a.setPointsP(tempPP);
+
+	cout << "Is assignment completed? (1 for yes, 0 for no): " << endl;
+	cin >> tempISC;
+	a.setIsComplete(tempISC);
+
+	a.setIsEdited(true);
+
+	return a;
 }
 
 double Category::getWeight()
