@@ -20,6 +20,7 @@ private:
 	int index;
 	int choice;
 	int catInd = 0;
+	double totalWeight = 0.0;
 
 public:
 

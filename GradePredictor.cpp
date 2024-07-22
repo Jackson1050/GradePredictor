@@ -99,7 +99,25 @@ void GradePredictor::readFiles()
 
 void GradePredictor::printSummary()
 {
+	system("CLS");
+	double classGrade = 0;
+	Category c;
+	for (int i = 0; i < Categories.size(); i++)
+	{
+		c = Categories[i];
+		cout << "Category: " << Categories[i].getName() << endl;
+		cout << "Grade: " << Categories[i].getGrade(c) << endl;
+		cout << "Total Weight: " << Categories[i].getWeight() << endl;
+		classGrade = classGrade + (Categories[i].getGrade(c) * Categories[i].getWeight());
+		
+	}
+	cout << "Predicted Grade for Class: " << classGrade << endl;
+	cout << "Press any key and ENTER to return to main menu" << endl;
+	cin >> choice;
+	mainMenu();
+
 	
+
 }
 
 void GradePredictor::printReport()
@@ -120,7 +138,7 @@ void GradePredictor::printReport()
 	cout << "Assignments Remaining: " << c.getARemaining(c) << endl;
 	cout << "Current Grade: " << c.getGrade(c) << endl;
 	cout << "Expected Grade on Unfinished Assignments: " << c.getAverage(c) << endl;
-	cout << "Expected Score for Category: " << c.getPredGrade(c) << endl;
+	cout << "Predicted Grade for Category: " << c.getPredGrade(c) << endl;
 	cout << endl;
 
 	for (Assignment a : c.Assignments)
@@ -128,7 +146,10 @@ void GradePredictor::printReport()
 		cout << a.getAssignmentInfo() << endl << endl;;
 			
 	}
-	
+
+	cout << "Press any key and ENTER to return to main menu" << endl;
+	cin >> choice;
+	mainMenu();
 }
 
 Category GradePredictor::addCategory(Category c)
@@ -162,15 +183,26 @@ void GradePredictor::mainMenu()
 	switch (choice)
 	{
 	case 1:
-
+		for (int i = 0; i < Categories.size(); i++)
+		{
+			totalWeight = totalWeight + Categories[i].getWeight();
+		}
+		if (totalWeight == 1.0)
+		{
+			printSummary();
+		}
+		else
+		{
+			cout << "Total Weights do not add up to 1. Edit your category weights first." << endl;
+			cout << "Press any key and ENTER to return to main menu" << endl;
+			cin >> choice;
+			mainMenu();
+		}
 		break;
 
 	case 2:
 		
 		printReport();
-		cout << "Press any key and ENTER to return to menu" << endl;
-		cin >> choice;
-		mainMenu();
 		break;
 
 	case 3:
@@ -221,6 +253,7 @@ void GradePredictor::assignMenu()
 	Assignment a;
 	system("CLS");
 	cout << "ASSIGNMENT MENU" << endl;
+	cout << "Category: " << Categories[catInd].getName() << endl;
 	cout << "Category weight: " << Categories[catInd].getWeight() << endl;
 	Category c = Categories[(catInd)];
 

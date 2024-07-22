@@ -130,8 +130,11 @@ double Category::getGrade(Category c)
 
 	for (int i = 0; i < c.Assignments.size(); i++)
 	{
-		totalPP = totalPP + c.Assignments[i].getPointsP();
-		totalPE = totalPE + c.Assignments[i].getPointsE();
+		if (c.Assignments[i].getIsComplete())
+		{
+			totalPP = totalPP + c.Assignments[i].getPointsP();
+			totalPE = totalPE + c.Assignments[i].getPointsE();
+		}
 	}
 
 	return (totalPE / totalPP) * 100;
@@ -155,30 +158,11 @@ double Category::getAverage(Category c)
 
 double Category::getPredGrade(Category c)
 {
-	double average = c.getAverage(c);
-	double actual = c.getGrade(c) / 100;
-	double comPointsP = 0;
-	double comPointsE = 0;
-	int inc = 0;
-	int max = 0;
-	double predGrade = 0;
-	for (int i = 0; i < c.Assignments.size(); i++)
-	{
-		if (c.Assignments[i].getIsComplete() == false)
-		{
-			inc++;
-			max = max + c.Assignments[i].getPointsP();
+	
+	double expectedGrade = c.getAverage(c);
+	double actualGrade = c.getGrade(c);
 
-		}
-		else
-		{
-			comPointsP = comPointsP + c.Assignments[i].getPointsP();
-			comPointsE = comPointsE + c.Assignments[i].getPointsE();
-		}
-		
-	}
-	predGrade = ((((max * average) / 100) + comPointsE) / comPointsP) * 100;
-	return predGrade;
+	return (expectedGrade + actualGrade) / 2;
 
 }
 
