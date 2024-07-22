@@ -78,6 +78,10 @@ Assignment Category::editAssignment(Assignment a)
 	cout << "Is assignment completed? (1 for yes, 0 for no): " << endl;
 	cin >> tempISC;
 	a.setIsComplete(tempISC);
+	if (tempISC = false)
+	{
+		a.setPointsE(0);
+	}
 
 	a.setIsEdited(true);
 
@@ -93,24 +97,89 @@ void Category::setWeight(double w)
 	totalWeight = w;
 }
 
-int Category::getAComplete()
+int Category::getAComplete(Category c)
 {
-	return 0;
+	int count = 0;
+	for (int i = 0; i < c.Assignments.size(); i++)
+	{
+		if (c.Assignments[i].getIsComplete() == true)
+		{
+			count++;
+		}
+	}
+	return count;
 }
 
-int Category::getARemaining()
+int Category::getARemaining(Category c)
 {
-	return 0;
+	int count = 0;
+	for (int i = 0; i < c.Assignments.size(); i++)
+	{
+		if (c.Assignments[i].getIsComplete() == false)
+		{
+			count++;
+		}
+	}
+	return count;
 }
 
-double Category::getGrade()
+double Category::getGrade(Category c)
 {
-	return 0.0;
+	double totalPP = 0;
+	double totalPE = 0;
+
+	for (int i = 0; i < c.Assignments.size(); i++)
+	{
+		totalPP = totalPP + c.Assignments[i].getPointsP();
+		totalPE = totalPE + c.Assignments[i].getPointsE();
+	}
+
+	return (totalPE / totalPP) * 100;
 }
 
-double Category::getPredGrade()
+double Category::getAverage(Category c)
 {
-	return 0.0;
+	double total = 0;
+	int count = 0;
+	for (int i = 0; i < c.Assignments.size(); i++)
+	{
+		if (c.Assignments[i].getIsComplete() == true)
+		{
+			count++;
+			total = total + ((static_cast<double>(c.Assignments[i].getPointsE()) / c.Assignments[i].getPointsP()) * 100);
+		}
+	}
+	double average = (total / count);
+	return average;
+}
+
+double Category::getPredGrade(Category c)
+{
+	double average = c.getAverage(c);
+	double actual = c.getGrade(c) / 100;
+	double comPointsP = 0;
+	double comPointsE = 0;
+	int inc = 0;
+	int max = 0;
+	double predGrade = 0;
+	for (int i = 0; i < c.Assignments.size(); i++)
+	{
+		if (c.Assignments[i].getIsComplete() == false)
+		{
+			inc++;
+			max = max + c.Assignments[i].getPointsP();
+
+		}
+		else
+		{
+			comPointsP = comPointsP + c.Assignments[i].getPointsP();
+			comPointsE = comPointsE + c.Assignments[i].getPointsE();
+		}
+		
+	}
+	predGrade = ((((max * average) / 100) + comPointsE) / comPointsP) * 100;
+	return predGrade;
+
 }
 
 int Category::getTotalPoints()

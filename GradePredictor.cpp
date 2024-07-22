@@ -74,6 +74,11 @@ void GradePredictor::readFiles()
 
 					inputFile >> binary;
 					a.setIsComplete(binary);
+					if (a.getIsComplete() == false)
+					{
+						a.setPointsE(0);
+					}
+
 					if (a.getNameA() != repBlock)
 					{
 						c.Assignments.push_back(a);
@@ -103,8 +108,20 @@ void GradePredictor::printReport()
 	cout << "Select which category to print report of: " << endl;
 	for (int i = 0; i < Categories.size(); i++)
 	{
-
+		cout << to_string((i + 1)) << ". " << Categories[i].getName() << endl;
 	}
+	cin >> choice;
+	c = Categories[choice - 1];
+
+	system("CLS");
+	cout << c.getName() << endl;
+	cout << "Category Weight: " << c.getWeight() << endl;
+	cout << "Assignments Completed: " << c.getAComplete(c) << endl;
+	cout << "Assignments Remaining: " << c.getARemaining(c) << endl;
+	cout << "Current Grade: " << c.getGrade(c) << endl;
+	cout << "Expected Grade on Unfinished Assignments: " << c.getAverage(c) << endl;
+	cout << "Expected Score for Category: " << c.getPredGrade(c) << endl;
+	cout << endl;
 
 	for (Assignment a : c.Assignments)
 	{
@@ -150,7 +167,10 @@ void GradePredictor::mainMenu()
 
 	case 2:
 		
-		
+		printReport();
+		cout << "Press any key and ENTER to return to menu" << endl;
+		cin >> choice;
+		mainMenu();
 		break;
 
 	case 3:

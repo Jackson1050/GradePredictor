@@ -1,9 +1,9 @@
 Homework
 Day1
-40
+25
 50
 1
-Test
+Homework
 Day2
 30
 50
@@ -12,7 +12,7 @@ Homework
 Day3
 10
 10
-1
+0
 Test
 Day4
 60
@@ -26,5 +26,4 @@ Day5
 Exam
 Day6
 100
-200
-1
+2

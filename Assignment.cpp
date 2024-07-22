@@ -95,7 +95,7 @@ string Assignment::getAssignmentInfo()
 	}
 
 	string infoA ="Category: " + group + "\n" + "Name: " + nameA + "\n" + "Points: " + to_string(pointsE) + "/" + to_string(pointsP) +
-		"\n" + "Complete?: " + complete + "\n" + "Edited?: " + edited;
+		"\n" + "Complete?: " + complete + "\n" + "Edited?: " + edited + "\n";
 
 	return infoA;
 }

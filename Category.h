@@ -30,10 +30,11 @@ public:
 	Assignment editAssignment(Assignment a);
 	double getWeight();
 	void setWeight(double w);
-	int getAComplete();
-	int getARemaining();
-	double getGrade();
-	double getPredGrade();
+	int getAComplete(Category c);
+	int getARemaining(Category c);
+	double getGrade(Category c);
+	double getPredGrade(Category c);
+	double getAverage(Category c);
 	int getTotalPoints();
 
 
