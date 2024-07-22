@@ -113,7 +113,7 @@ void GradePredictor::printSummary()
 	}
 	cout << "Predicted Grade for Class: " << classGrade << endl;
 	cout << "Press any key and ENTER to return to main menu" << endl;
-	cin >> choice;
+	cin >> input;
 	mainMenu();
 
 	
@@ -129,6 +129,10 @@ void GradePredictor::printReport()
 		cout << to_string((i + 1)) << ". " << Categories[i].getName() << endl;
 	}
 	cin >> choice;
+	while ((choice < 1) || (choice > Categories.size()))
+	{
+		cin >> choice;
+	}
 	c = Categories[choice - 1];
 
 	system("CLS");
@@ -148,7 +152,7 @@ void GradePredictor::printReport()
 	}
 
 	cout << "Press any key and ENTER to return to main menu" << endl;
-	cin >> choice;
+	cin >> input;
 	mainMenu();
 }
 
@@ -195,7 +199,7 @@ void GradePredictor::mainMenu()
 		{
 			cout << "Total Weights do not add up to 1. Edit your category weights first." << endl;
 			cout << "Press any key and ENTER to return to main menu" << endl;
-			cin >> choice;
+			cin >> input;
 			mainMenu();
 		}
 		break;
@@ -208,7 +212,13 @@ void GradePredictor::mainMenu()
 	case 3:
 		catMenu();
 		break;
+
+	default:
+		mainMenu();
+		break;
 	}
+
+
 
 }
 
@@ -229,6 +239,10 @@ void GradePredictor::catMenu()
 	}
 	cout << "Choose Category to edit: " << endl;
 	cin >> choice;
+	while ((choice < 0) || (choice > (Categories.size() + 1)))
+	{
+		cin >> choice;
+	}
 	catInd = (choice - 2);
 	switch (choice)
 	{
@@ -267,6 +281,20 @@ void GradePredictor::assignMenu()
 	}
 	cout << "Choose assignment to edit: " << endl;
 	cin >> choice;
+	if (c.Assignments.size() == 0)
+	{
+		while ((choice < 0) || (choice > 2))
+		{
+			cin >> choice;
+		}
+	}
+	else
+	{
+		while ((choice < 0) || (choice > c.Assignments.size() - 1))
+		{
+			cin >> choice;
+		}
+	}
 	switch (choice)
 	{
 	case 0: 

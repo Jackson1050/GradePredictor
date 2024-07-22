@@ -19,6 +19,7 @@ private:
 	double predClassGrade;
 	int index;
 	int choice;
+	char input;
 	int catInd = 0;
 	double totalWeight = 0.0;
 
