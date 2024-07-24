@@ -16,8 +16,8 @@ int main()
 {
 	GradePredictor GP;
 
-	GP.readFiles();
-	GP.mainMenu();
+	GP.readFiles(); //reads assignments from txt file
+	GP.mainMenu(); //runs program
 
 	return 0;
 }

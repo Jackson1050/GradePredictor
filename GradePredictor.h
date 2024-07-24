@@ -29,7 +29,6 @@ public:
 	void printSummary();
 	void printReport();
 	Category addCategory(Category c);
-	void editCategory();
 	void mainMenu();
 	void catMenu();
 	void assignMenu();

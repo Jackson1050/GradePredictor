@@ -29,7 +29,7 @@ void Category::addAssignment(Assignment a)
 }
 
 Assignment Category::newInfo(Assignment a)
-{
+{//Take in info about assignment and create a new one in the correct category
 	string tempName;
 	int tempPP;
 	int tempPE;
@@ -56,7 +56,7 @@ Assignment Category::newInfo(Assignment a)
 }
 
 Assignment Category::editAssignment(Assignment a)
-{
+{//allow user to edit existing assignment, and make it clear that the assignment has been edited
 	string tempName;
 	int tempPP;
 	int tempPE;
@@ -98,7 +98,7 @@ void Category::setWeight(double w)
 }
 
 int Category::getAComplete(Category c)
-{
+{//count the number of assignments in this category that are complete
 	int count = 0;
 	for (int i = 0; i < c.Assignments.size(); i++)
 	{
@@ -111,7 +111,7 @@ int Category::getAComplete(Category c)
 }
 
 int Category::getARemaining(Category c)
-{
+{//count the number of assignments in this category that are not complete
 	int count = 0;
 	for (int i = 0; i < c.Assignments.size(); i++)
 	{
@@ -124,7 +124,7 @@ int Category::getARemaining(Category c)
 }
 
 double Category::getGrade(Category c)
-{
+{//add up all points earned and all points possible from this category. Divide earned by possible and return as a percent
 	double totalPP = 0;
 	double totalPE = 0;
 
@@ -141,7 +141,7 @@ double Category::getGrade(Category c)
 }
 
 double Category::getAverage(Category c)
-{
+{//Add up all the grades of each assignment and get the average grade based on the number of assignments
 	double total = 0;
 	int count = 0;
 	for (int i = 0; i < c.Assignments.size(); i++)
@@ -157,7 +157,8 @@ double Category::getAverage(Category c)
 }
 
 double Category::getPredGrade(Category c)
-{
+{//average out the actual grade of completed assignments and the expected grade of incomplete assignments to get
+	//the predicted grade for the entire category
 	
 	double expectedGrade = c.getAverage(c);
 	double actualGrade = c.getGrade(c);

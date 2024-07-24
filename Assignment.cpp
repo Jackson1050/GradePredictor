@@ -72,7 +72,7 @@ void Assignment::setGroup(string gr)
 }
 
 string Assignment::getAssignmentInfo()
-{
+{//Format assignment info into a block that can be used by the category menu
 	string complete;
 	string edited;
 
