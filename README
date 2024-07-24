@@ -1,4 +1,10 @@
 A Grade Predictor that utilizes automatic population via file reading, and manual population via console
 
+Main Program.cpp automates the reading of the files and the display of the main menu that the program runs on
 
+GradePredictor.cpp contains the meat of the program. The menu display functions are found here, as well as the file reader
+
+Category.cpp contains the attributes and functions that each category of assignments will need in order for the GradePredictor to perform the calculations with
+
+Assignment.cpp contains the attributs and functions of the individual assignments that will be referenced by the Category
 
